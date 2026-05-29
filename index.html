@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>claude-ppt-skill — Claude Code PPT 기획·생성 스킬</title>
+<meta name="description" content="3라운드 인터랙션으로 목적·청중·디자인을 먼저 설계한 뒤 발표자료를 만드는 Claude Code 스킬. 20가지 스타일 · 14가지 폰트 · 8가지 컬러 팔레트.">
+<meta name="theme-color" content="#3182F6">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233182F6'/><text y='22' x='5' font-size='20' font-family='Arial' font-weight='900' fill='white'>P</text></svg>">
+<meta property="og:type" content="website">
+<meta property="og:title" content="claude-ppt-skill — Claude Code PPT 기획·생성 스킬">
+<meta property="og:description" content="3라운드 인터랙션으로 목적·청중·디자인을 먼저 설계한 뒤 발표자료를 만드는 Claude Code 스킬.">
+<meta property="og:url" content="https://commme.github.io/claude-ppt-skill/">
+<meta property="og:image" content="https://commme.github.io/claude-ppt-skill/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="claude-ppt-skill — Claude Code PPT 기획·생성 스킬">
+<meta name="twitter:description" content="20가지 디자인 스타일 · 14가지 폰트 · 8가지 컬러 팔레트">
+<meta name="twitter:image" content="https://commme.github.io/claude-ppt-skill/og-image.png">
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Pretendard",system-ui,sans-serif;background:#FFF9F0;color:#1F2937;min-height:100vh;display:flex;flex-direction:column}
+header{padding:64px 6vw 40px;text-align:center}
+.pill{display:inline-flex;padding:10px 22px;border-radius:999px;background:#3182F6;color:#fff;font-weight:900;font-size:14px;letter-spacing:.04em;margin-bottom:28px}
+h1{font-size:clamp(40px,7vw,84px);font-weight:900;line-height:.95;letter-spacing:-.06em;margin-bottom:20px}
+h1 span{color:#3182F6}
+.lead{max-width:640px;margin:0 auto 40px;color:#6B7280;font-size:18px;line-height:1.7}
+.cta-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:56px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:16px;font-weight:900;font-size:16px;text-decoration:none;border:none;cursor:pointer;font-family:inherit;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(49,130,246,.25)}
+.btn-primary{background:#3182F6;color:#fff}
+.btn-secondary{background:#fff;color:#1F2937;border:1.5px solid #E5DED3}
+.stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;padding:32px;background:rgba(255,255,255,.7);border-radius:24px;max-width:680px;margin:0 auto;border:1px solid #E5DED3}
+.stat{text-align:center}
+.stat-num{font-size:42px;font-weight:900;color:#3182F6;letter-spacing:-.04em;line-height:1}
+.stat-label{font-size:13px;color:#6B7280;margin-top:4px;font-weight:700}
+section{max-width:900px;margin:56px auto;padding:0 6vw;width:100%}
+h2{font-size:clamp(24px,3.5vw,36px);font-weight:900;letter-spacing:-.04em;margin-bottom:20px}
+.install-box{background:#1F2937;color:#E2E8F0;border-radius:20px;padding:24px 28px;font-family:'Courier New',monospace;font-size:14px;line-height:1.8;overflow-x:auto}
+.comment{color:#6B7280}.cmd{color:#93C5FD}
+.steps{display:grid;gap:16px;margin-top:20px}
+.step{display:flex;gap:16px;background:#fff;border-radius:16px;padding:20px;border:1px solid #E5DED3;align-items:flex-start}
+.step-num{width:36px;height:36px;border-radius:999px;background:#3182F6;color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.step-body h3{font-size:16px;font-weight:900;margin-bottom:4px;letter-spacing:-.02em}
+.step-body p{font-size:14px;color:#6B7280;line-height:1.5}
+footer{margin-top:auto;padding:28px 6vw;text-align:center;border-top:1px solid #E5DED3;color:#6B7280;font-size:13px}
+footer a{color:#3182F6;text-decoration:none;font-weight:800}
+</style>
+</head>
+<body>
+<header>
+  <div class="pill">Claude Code Skill · MIT</div>
+  <h1>PPT <span>Design</span><br>Menu</h1>
+  <p class="lead">PPT를 바로 만들지 않는다.<br>3라운드 인터랙션으로 목적·청중·디자인을 먼저 설계한 뒤, 발표자료를 생성한다.</p>
+  <div class="cta-group">
+    <a class="btn btn-primary" href="references/design-menu.html">디자인 메뉴 열기 →</a>
+    <a class="btn btn-secondary" href="https://github.com/commme/claude-ppt-skill" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">20</div><div class="stat-label">디자인 스타일</div></div>
+    <div class="stat"><div class="stat-num">14</div><div class="stat-label">폰트</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">컬러 팔레트</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">기획 라운드</div></div>
+  </div>
+</header>
+
+<section>
+  <h2>설치</h2>
+  <div class="install-box">
+    <span class="comment"># 프로젝트 스킬로 등록</span><br>
+    <span class="cmd">mkdir -p .claude/skills/ppt-maker</span><br>
+    <span class="cmd">cp SKILL.md .claude/skills/ppt-maker/</span><br>
+    <span class="cmd">cp -r references .claude/skills/ppt-maker/</span>
+  </div>
+</section>
+
+<section>
+  <h2>사용 흐름</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>트리거</h3>
+        <p>"PPT 만들어줘", "발표자료", "제안서 만들어" 등 자연어로 요청</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>라운드 1 — 목적 · 청중 · 핵심 메시지</h3>
+        <p>왜 만드나 / 누구를 위해 / 청중이 기억할 한 문장</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>라운드 2 — 스토리라인 · 서식</h3>
+        <p>문제→해결 / 개념→실습 / Before→After · 비율 · 밀도 · 장수</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>라운드 3 — 컬러 · 폰트 · 스타일 (P01–P20)</h3>
+        <p>미리보기는 디자인 메뉴에서 미니 슬라이드 3장씩 확인 가능</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h3>기획안 확정 → 아웃라인 → 슬라이드 생성 → QA</h3>
+        <p>금기사항 자동 적용 (과한 그라데이션 / 의미없는 아이콘 / 텍스트 넘침 등)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <a href="https://github.com/commme" target="_blank" rel="noopener">COMMME</a> · Built with Claude Code · <a href="https://github.com/commme/claude-ppt-skill/blob/master/LICENSE" target="_blank" rel="noopener">MIT License</a></p>
+</footer>
+</body>
+</html>
