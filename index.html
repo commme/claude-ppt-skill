@@ -18,8 +18,9 @@
 <meta name="twitter:title" content="claude-ppt-skill — Claude Code PPT 기획·생성 스킬">
 <meta name="twitter:description" content="20가지 디자인 스타일 · 14가지 폰트 · 8가지 컬러 팔레트">
 <meta name="twitter:image" content="https://commme.github.io/claude-ppt-skill/og-image.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:"Pretendard",system-ui,sans-serif;background:#FFF9F0;color:#1F2937;min-height:100vh;display:flex;flex-direction:column}
 header{padding:64px 6vw 40px;text-align:center}
@@ -58,23 +59,7 @@ footer a{color:#3182F6;text-decoration:none;font-weight:800}
     <a class="btn btn-primary" href="references/design-menu.html">디자인 메뉴 열기 →</a>
     <a class="btn btn-secondary" href="https://github.com/commme/claude-ppt-skill" target="_blank" rel="noopener">GitHub</a>
   </div>
-  <div class="stats">
-    <div class="stat"><div class="stat-num">20</div><div class="stat-label">디자인 스타일</div></div>
-    <div class="stat"><div class="stat-num">14</div><div class="stat-label">폰트</div></div>
-    <div class="stat"><div class="stat-num">8</div><div class="stat-label">컬러 팔레트</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">기획 라운드</div></div>
-  </div>
 </header>
-
-<section>
-  <h2>설치</h2>
-  <div class="install-box">
-    <span class="comment"># 프로젝트 스킬로 등록</span><br>
-    <span class="cmd">mkdir -p .claude/skills/ppt-maker</span><br>
-    <span class="cmd">cp SKILL.md .claude/skills/ppt-maker/</span><br>
-    <span class="cmd">cp -r references .claude/skills/ppt-maker/</span>
-  </div>
-</section>
 
 <section>
   <h2>사용 흐름</h2>
