@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code internals
+.claude/
+.omc/
+.bkit/
+
+# Dev / private files
+design.md
+ref.md
+menu.html
+font-preview.html
+*-sample.html
+examples/
+workspace/
+security-audit/
+
+# Output files
+*.pptx
+*.ppt
+*.key
+
+# Node (if any tooling is added later)
+node_modules/
+npm-debug.log*

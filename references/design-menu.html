@@ -1,0 +1,484 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PPT Design Menu v10</title><style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Noto+Serif+KR:wght@400;700;900&family=IBM+Plex+Sans+KR:wght@400;700;900&family=Nanum+Gothic:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;900&family=Gowun+Dodum:wght@400;700;900&family=Hahmlet:wght@400;700;900&family=Black+Han+Sans:wght@400;700;900&family=Do+Hyeon:wght@400;700;900&family=Montserrat:wght@400;700;900&family=Poppins:wght@400;700;900&family=Work+Sans:wght@400;700;900&family=Manrope:wght@400;700;900&display=swap');
+:root{--blue:#3182F6;--cream:#FFF9F0;--cream2:#F7F1E8;--text:#1F2937;--muted:#6B7280;--line:#E5DED3;}
+*{box-sizing:border-box}body{margin:0;font-family:"Pretendard","Noto Sans KR",system-ui,sans-serif;background:linear-gradient(180deg,#fff 0%,var(--cream) 58%,var(--cream2) 100%);color:var(--text)}
+header{padding:56px 6vw 28px;text-align:center}.pill{display:inline-flex;padding:10px 22px;border-radius:999px;background:var(--blue);color:#fff;font-weight:900}
+h1{font-size:clamp(42px,7vw,88px);line-height:.95;letter-spacing:-.06em;margin:24px 0 12px}h1 span{color:var(--blue)}.lead{max-width:980px;margin:0 auto;color:var(--muted);font-size:20px;line-height:1.6}
+nav{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:14px 16px;background:rgba(255,249,240,.92);backdrop-filter:blur(12px);border-block:1px solid var(--line)}
+nav a{text-decoration:none;color:var(--text);font-weight:900;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 16px}
+section{max-width:1520px;margin:0 auto;padding:46px 6vw}.section-head{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;margin-bottom:22px;border-bottom:3px solid var(--blue);padding-bottom:12px}
+h2{font-size:clamp(30px,4.5vw,56px);line-height:1;letter-spacing:-.05em;margin:0}.section-head p{margin:0 0 6px;color:var(--muted);font-weight:700}
+.grid,.slide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.card,.font-card,.style-card,.prompt-card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 12px 30px rgba(31,41,55,.08)}
+.card{padding:20px;min-height:188px}.tag{display:inline-block;background:var(--blue);color:#fff;padding:5px 10px;font-size:12px;font-weight:900;border-radius:999px}
+.card h3{margin:12px 0 8px;font-size:22px;letter-spacing:-.03em}
+code{display:block;margin-top:6px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:7px 8px;font-size:12px;color:#334155}
+.swatches{display:flex;gap:6px;margin-bottom:12px}.swatches i{display:inline-block;width:34px;height:34px;border-radius:10px;border:1px solid rgba(0,0,0,.08)}
+.font-slide{aspect-ratio:16/9;padding:22px;background:#FFF9F0;color:#1F2937;display:grid;grid-template-rows:auto 1fr auto auto;gap:10px}
+.font-header{display:flex;justify-content:space-between;align-items:center}.font-name{color:#3182F6;font-size:14px;font-weight:900}
+.chip{background:#3182F6;color:#fff;font-size:11px;font-weight:900;padding:7px 10px;border-radius:999px}
+.sample-main{align-self:center;font-size:clamp(23px,3vw,32px);font-weight:900;line-height:1.12;letter-spacing:-.04em}
+.sample-sub{font-size:13px;color:#6B7280;line-height:1.4}.sample-row{display:flex;gap:10px;flex-wrap:wrap}
+.sample-row span{background:white;border:1px solid #E5DED3;border-radius:999px;padding:8px 12px;font-size:14px}
+.card-meta{padding:14px 16px 18px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.45}
+.card-meta span{color:#6B7280}.card-meta a{color:#3182F6;text-decoration:none;font-weight:800}
+/* Style card new layout */
+.style-card-head{padding:14px 16px 0}
+.style-no-badge{display:inline-block;background:var(--blue);color:#fff;border-radius:999px;font-size:10px;font-weight:900;padding:4px 10px;letter-spacing:.05em;margin-bottom:7px}
+.style-card-head h4{margin:0 0 3px;font-size:17px;letter-spacing:-.03em;font-weight:900}
+.style-card-head .sdesc{margin:0;font-size:11px;line-height:1.4;color:var(--muted)}
+.ms-wrap{padding:0 14px}
+.style-info{padding:8px 16px 16px;display:flex;flex-direction:column;gap:5px;font-size:13px;line-height:1.45}
+.style-info small{color:#6B7280}
+.style-tags{display:flex;gap:5px;flex-wrap:wrap}
+.style-tags em{font-style:normal;font-size:11px;color:var(--blue);border:1px solid rgba(49,130,246,.2);border-radius:999px;padding:3px 7px;background:white}
+.mini-copy{margin-top:5px;border:none;background:var(--blue);color:#fff;border-radius:12px;padding:9px 10px;font-weight:800;cursor:pointer;font-family:inherit;font-size:12px;width:100%;text-align:center}
+.hidden-prompt{display:none}
+/* Prompt cards */
+.prompt-card{padding:20px}.prompt-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}
+.prompt-head h3{margin:0;font-size:26px;letter-spacing:-.04em}
+.copy-btn{border:none;background:var(--blue);color:#fff;padding:12px 16px;border-radius:14px;font-weight:900;cursor:pointer;font-family:inherit}
+pre{margin:0;white-space:pre-wrap;word-break:break-word;background:#0F172A;color:#E5E7EB;border-radius:20px;padding:18px;overflow:auto;font-size:14px;line-height:1.6}
+.two-col{display:grid;grid-template-columns:1fr;gap:18px}@media(min-width:1100px){.two-col{grid-template-columns:1fr 1fr}}
+/* Mini-slides */
+.mini-slides{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:8px 0}
+.ms{--ms-main:#4F9D8D;--ms-bg:#FFF9F0;--ms-bg-sub:#E7F3EF;--ms-text:#1F2937;--ms-sub:#9CA3AF;--ms-accent:#F59E0B;--ms-dark:#1A2F54;aspect-ratio:16/9;background:var(--ms-bg);color:var(--ms-text);border:1px solid rgba(0,0,0,.08);border-radius:5px;padding:7px 8px;font-size:6.5px;line-height:1.3;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.ms.dark{background:var(--ms-dark);color:#fff;border-color:rgba(255,255,255,.1)}
+.ms .ms-bar{position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--ms-main)}
+.ms .ms-h{font-weight:800;letter-spacing:-0.02em;font-size:9px;line-height:1.15}
+.ms .ms-h.serif{font-family:'Noto Serif KR',serif;font-weight:700}
+.ms .ms-h.mono{font-family:monospace;font-size:7px}
+.ms .ms-h.big{font-size:11px}
+.ms .ms-sub{color:var(--ms-sub);font-size:6px;margin-top:2px}
+.ms.dark .ms-sub{color:rgba(255,255,255,.55)}
+.ms .ms-chip{display:inline-block;background:var(--ms-main);color:#fff;padding:1.5px 4px;border-radius:4px;font-size:5px;font-weight:800;align-self:flex-start;margin-bottom:4px;letter-spacing:.04em}
+.ms .ms-grid-4{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:auto}
+.ms .ms-grid-4>div{background:var(--ms-bg-sub);border-radius:2px;height:11px;border-left:1.5px solid var(--ms-main)}
+.ms.dark .ms-grid-4>div{background:rgba(255,255,255,.08)}
+.ms .ms-bignum{font-size:30px;font-weight:900;color:var(--ms-main);line-height:1;margin:auto 0 2px;text-align:center;letter-spacing:-0.05em}
+.ms.dark .ms-bignum{color:var(--ms-accent)}
+.ms .ms-table{display:flex;flex-direction:column;gap:1.5px;margin-top:4px}
+.ms .ms-table>div{height:5px;background:var(--ms-bg-sub);border-radius:1px}
+.ms .ms-table>div:first-child{background:var(--ms-main);height:6px}
+.ms .ms-chart{display:flex;gap:2px;align-items:flex-end;height:24px;margin-top:auto}
+.ms .ms-chart>div{flex:1;background:var(--ms-main);border-radius:1px 1px 0 0}
+.ms .ms-chart>div:nth-child(1){height:40%;opacity:.45}
+.ms .ms-chart>div:nth-child(2){height:70%;opacity:.7}
+.ms .ms-chart>div:nth-child(3){height:100%}
+.ms .ms-flow{display:flex;align-items:center;gap:2px;margin-top:auto;font-size:5px}
+.ms .ms-flow>div{background:var(--ms-bg-sub);padding:2px 3px;border-radius:2px;flex:1;text-align:center;color:var(--ms-text);font-weight:700}
+.ms .ms-flow>span{color:var(--ms-sub);font-size:6px}
+.ms.dark .ms-flow>div{background:rgba(255,255,255,.12);color:#fff}
+.ms .ms-code{background:rgba(0,0,0,.45);border-radius:2px;padding:3px 4px;margin-top:auto;font-family:monospace;font-size:5px;color:var(--ms-accent);line-height:1.5}
+.ms .ms-cols{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:4px}
+.ms .ms-cols>div{background:var(--ms-bg-sub);height:18px;border-radius:1px}
+.ms .ms-img{border-radius:3px;height:26px;margin:4px 0;background:linear-gradient(135deg,var(--ms-main),var(--ms-accent))}
+.ms .ms-quote{font-family:'Noto Serif KR',serif;font-style:italic;font-size:8px;line-height:1.4;color:var(--ms-text);margin:auto 0;font-weight:600}
+footer{text-align:center;color:#9CA3AF;font-weight:900;padding:36px}
+</style>
+<script>
+function copyText(id,btn){const t=document.getElementById(id).innerText;navigator.clipboard.writeText(t).then(()=>{const o=btn.innerText;btn.innerText="복사 완료 ✓";setTimeout(()=>btn.innerText=o,1600);});}
+function copyHidden(id,btn){const t=document.getElementById(id).innerText;navigator.clipboard.writeText(t).then(()=>{const o=btn.innerText;btn.innerText="복사 완료 ✓";setTimeout(()=>btn.innerText=o,1600);});}
+</script></head>
+<body>
+<header><div class="pill">PPT Design Menu v10</div><h1>디자인 스타일 20가지 +<br><span>미니 슬라이드 프리뷰</span></h1><p class="lead">스타일마다 3장의 미니 PPT 슬라이드로 실제 느낌을 미리 확인하세요. P01~P20 번호로 Claude에게 바로 전달할 수 있습니다.</p></header>
+<nav><a href="#colors">컬러</a><a href="#fontslides">폰트 비교</a><a href="#gallery">스타일 서식 모음집</a><a href="#prompts">프롬프트</a></nav>
+
+<section id="colors"><div class="section-head"><h2>컬러 팔레트</h2><p>PPT 스타일에 적용할 기본 색상 조합</p></div><div class="grid">
+<article class="card"><div class="swatches"><i style="background:#3182F6"></i><i style="background:#FFF9F0"></i><i style="background:#1F2937"></i><i style="background:#F59E0B"></i></div><span class="tag">COLOR</span><h3>Royal Blue</h3><p>AI 강의자료</p><code>Main #3182F6</code><code>BG #FFF9F0</code><code>Accent #F59E0B</code></article>
+<article class="card"><div class="swatches"><i style="background:#111827"></i><i style="background:#F8F5EF"></i><i style="background:#1F2937"></i><i style="background:#C96A40"></i></div><span class="tag">COLOR</span><h3>Editorial Black</h3><p>에디토리얼/잡지</p><code>Main #111827</code><code>BG #F8F5EF</code><code>Accent #C96A40</code></article>
+<article class="card"><div class="swatches"><i style="background:#1E3A5F"></i><i style="background:#F8FAFC"></i><i style="background:#1E293B"></i><i style="background:#0D9488"></i></div><span class="tag">COLOR</span><h3>Marketing Navy</h3><p>마케팅 보고</p><code>Main #1E3A5F</code><code>BG #F8FAFC</code><code>Accent #0D9488</code></article>
+<article class="card"><div class="swatches"><i style="background:#6D5DF6"></i><i style="background:#F7F7FF"></i><i style="background:#111827"></i><i style="background:#22C55E"></i></div><span class="tag">COLOR</span><h3>Startup Purple</h3><p>스타트업/IR</p><code>Main #6D5DF6</code><code>BG #F7F7FF</code><code>Accent #22C55E</code></article>
+<article class="card"><div class="swatches"><i style="background:#111111"></i><i style="background:#FFFFFF"></i><i style="background:#1D1D1F"></i><i style="background:#007AFF"></i></div><span class="tag">COLOR</span><h3>Apple Clean</h3><p>제품 발표</p><code>Main #111111</code><code>BG #FFFFFF</code><code>Accent #007AFF</code></article>
+<article class="card"><div class="swatches"><i style="background:#4F9D8D"></i><i style="background:#FFF9F0"></i><i style="background:#2F3A35"></i><i style="background:#F2C94C"></i></div><span class="tag">COLOR</span><h3>Wellness Green</h3><p>웰니스</p><code>Main #4F9D8D</code><code>BG #FFF9F0</code><code>Accent #F2C94C</code></article>
+<article class="card"><div class="swatches"><i style="background:#111111"></i><i style="background:#FAF7EF"></i><i style="background:#111111"></i><i style="background:#C8A24A"></i></div><span class="tag">COLOR</span><h3>Premium Gold</h3><p>프리미엄 제안</p><code>Main #111111</code><code>BG #FAF7EF</code><code>Accent #C8A24A</code></article>
+<article class="card"><div class="swatches"><i style="background:#0891B2"></i><i style="background:#ECFEFF"></i><i style="background:#164E63"></i><i style="background:#F97316"></i></div><span class="tag">COLOR</span><h3>Tech Cyan</h3><p>테크/데이터</p><code>Main #0891B2</code><code>BG #ECFEFF</code><code>Accent #F97316</code></article>
+</div></section>
+
+<section id="fontslides"><div class="section-head"><h2>폰트 비교</h2><p>Pretendard 포함 14종 · 같은 문장으로 비교</p></div><div class="slide-grid">
+<article class="font-card"><div class="font-slide" style="font-family:'Pretendard','Noto Sans KR',sans-serif;"><div class="font-header"><span class="font-name">Pretendard</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Pretendard</b><span>가장 무난한 실무형 PPT / 카드뉴스 / 제안서</span><a href="https://github.com/orioncactus/pretendard" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Noto Sans KR',sans-serif;"><div class="font-header"><span class="font-name">Noto Sans KR</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Noto Sans KR</b><span>공식적이고 안정적인 보고서/제안서</span><a href="https://fonts.google.com/noto/specimen/Noto+Sans+KR" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Noto Serif KR',serif;"><div class="font-header"><span class="font-name">Noto Serif KR</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Noto Serif KR</b><span>정갈한 문서형 보고서</span><a href="https://fonts.google.com/noto/specimen/Noto+Serif+KR" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'IBM Plex Sans KR',sans-serif;"><div class="font-header"><span class="font-name">IBM Plex Sans KR</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>IBM Plex Sans KR</b><span>기술·AI·데이터 발표</span><a href="https://fonts.google.com/specimen/IBM+Plex+Sans+KR" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Nanum Gothic',sans-serif;"><div class="font-header"><span class="font-name">Nanum Gothic</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Nanum Gothic</b><span>범용 업무자료</span><a href="https://fonts.google.com/specimen/Nanum+Gothic" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Nanum Myeongjo',serif;"><div class="font-header"><span class="font-name">Nanum Myeongjo</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Nanum Myeongjo</b><span>차분한 인문/브랜드 자료</span><a href="https://fonts.google.com/specimen/Nanum+Myeongjo" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Gowun Dodum',sans-serif;"><div class="font-header"><span class="font-name">Gowun Dodum</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Gowun Dodum</b><span>부드러운 교육자료</span><a href="https://fonts.google.com/specimen/Gowun+Dodum" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Hahmlet',serif;"><div class="font-header"><span class="font-name">Hahmlet</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Hahmlet</b><span>고급스러운 세리프형 발표자료</span><a href="https://fonts.google.com/specimen/Hahmlet" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Black Han Sans',sans-serif;"><div class="font-header"><span class="font-name">Black Han Sans</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Black Han Sans</b><span>강한 표지/카드뉴스 제목</span><a href="https://fonts.google.com/specimen/Black+Han+Sans" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Do Hyeon',sans-serif;"><div class="font-header"><span class="font-name">Do Hyeon</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Do Hyeon</b><span>명확한 제목형 콘텐츠</span><a href="https://fonts.google.com/specimen/Do+Hyeon" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Montserrat',sans-serif;"><div class="font-header"><span class="font-name">Montserrat</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Montserrat</b><span>영문 브랜드/IR 제목</span><a href="https://fonts.google.com/specimen/Montserrat" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Poppins',sans-serif;"><div class="font-header"><span class="font-name">Poppins</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Poppins</b><span>서비스 소개/모던 발표</span><a href="https://fonts.google.com/specimen/Poppins" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Work Sans',sans-serif;"><div class="font-header"><span class="font-name">Work Sans</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Work Sans</b><span>비즈니스 발표/영문 병기</span><a href="https://fonts.google.com/specimen/Work+Sans" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+<article class="font-card"><div class="font-slide" style="font-family:'Manrope',sans-serif;"><div class="font-header"><span class="font-name">Manrope</span><span class="chip">FONT</span></div><div class="sample-main">기준을 먼저 정합니다</div><div class="sample-sub">좋은 PPT는 목적과 청중에서 시작됩니다</div><div class="sample-row"><span>Aa 123</span><span>메시지</span></div></div><div class="card-meta"><b>Manrope</b><span>깔끔한 요약/대시보드</span><a href="https://fonts.google.com/specimen/Manrope" target="_blank" rel="noopener">다운로드 ↗</a></div></article>
+</div></section>
+
+<section id="gallery"><div class="section-head"><h2>스타일 서식 모음집</h2><p>각 스타일마다 미니 PPT 슬라이드 3장으로 실제 느낌을 미리 확인하세요</p></div><div class="slide-grid">
+
+<!-- P01 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P01</span><h4>미니멀 B2B SaaS</h4><p class="sdesc">깔끔·절제·신뢰. 넓은 여백 + 카드형 구조 + 단색 지배.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#3182F6;--ms-bg:#FFF9F0;--ms-bg-sub:#F0EBE0"><div class="ms-bar"></div><div class="ms-h big">간편 송금<br>3초 만에</div><div class="ms-sub">— 미니멀 SaaS 톤</div></div><div class="ms" style="--ms-main:#3182F6;--ms-bg:#FFF9F0;--ms-bg-sub:#F0EBE0"><div class="ms-bar"></div><div class="ms-h">핵심 기능 4가지</div><div class="ms-grid-4"><div></div><div></div><div></div><div></div></div></div><div class="ms" style="--ms-main:#3182F6;--ms-bg:#FFF9F0;--ms-bg-sub:#F0EBE0"><div class="ms-bar"></div><div class="ms-sub">활성 사용자</div><div class="ms-bignum">2.1M</div><div class="ms-sub" style="text-align:center">전월 대비 +28%</div></div></div></div><div class="style-info"><small>Pretendard</small><div class="style-tags"><em>넓은 여백</em><em>카드형</em><em>단색 지배</em></div><button class="mini-copy" onclick="copyHidden('sp0',this)">이 스타일 프롬프트 복사</button><pre id="sp0" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 미니멀 B2B SaaS (P01)
+스타일 설명: 깔끔·절제·신뢰. 넓은 여백 + 카드형 구조 + 단색 지배.
+서식 구조: 좌측 포인트 바 + 큰 제목 + 카드 그리드
+추천 폰트: Pretendard
+컬러:
+- 메인: #3182F6
+- 배경: #FFF9F0
+- 텍스트: #1F2937
+- 강조: #F59E0B
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P02 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P02</span><h4>따뜻한 교육자료</h4><p class="sdesc">친근·쉬움·따뜻. 둥근 카드 + 크림 배경 + 단계형.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#4F9D8D;--ms-bg:#FFF9F0;--ms-bg-sub:#E7F3EF"><div class="ms-chip">LESSON 01</div><div class="ms-h big">한 단계씩<br>차근차근</div></div><div class="ms" style="--ms-main:#4F9D8D;--ms-bg:#FFF9F0;--ms-bg-sub:#E7F3EF"><div class="ms-h">학습 흐름</div><div class="ms-flow"><div>학습</div><span>→</span><div>실습</div><span>→</span><div>복습</div></div></div><div class="ms" style="--ms-main:#4F9D8D;--ms-bg:#FFF9F0;--ms-bg-sub:#E7F3EF"><div class="ms-h">개념 비교</div><div class="ms-cols"><div></div><div></div></div><div class="ms-sub">왼쪽 vs 오른쪽</div></div></div></div><div class="style-info"><small>Pretendard + Gowun Dodum</small><div class="style-tags"><em>둥근 카드</em><em>크림 배경</em><em>단계형</em></div><button class="mini-copy" onclick="copyHidden('sp1',this)">이 스타일 프롬프트 복사</button><pre id="sp1" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 따뜻한 교육자료 (P02)
+스타일 설명: 친근·쉬움·따뜻. 둥근 카드 + 크림 배경 + 단계형.
+서식 구조: 개념 카드 + 흐름 다이어그램 + 비교 2열
+추천 폰트: Pretendard + Gowun Dodum
+컬러:
+- 메인: #4F9D8D
+- 배경: #FFF9F0
+- 텍스트: #2F3A35
+- 강조: #F2C94C
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P03 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P03</span><h4>절제된 금융/전략 보고서</h4><p class="sdesc">신뢰·논리·권위. 네이비·차트 중심·표 정렬.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#1E3A5F;--ms-bg:#F8FAFC;--ms-bg-sub:#E2E8F0"><div class="ms-bar"></div><div class="ms-sub">Q1 2026 REPORT</div><div class="ms-h big">사업 성과<br>분석 보고</div></div><div class="ms" style="--ms-main:#1E3A5F;--ms-bg:#F8FAFC;--ms-bg-sub:#E2E8F0"><div class="ms-bar"></div><div class="ms-h">분기 지표</div><div class="ms-table"><div></div><div></div><div></div><div></div></div></div><div class="ms" style="--ms-main:#1E3A5F;--ms-bg:#F8FAFC;--ms-bg-sub:#E2E8F0"><div class="ms-bar"></div><div class="ms-h">매출 추이</div><div class="ms-chart"><div></div><div></div><div></div></div></div></div></div><div class="style-info"><small>IBM Plex Sans KR + Pretendard</small><div class="style-tags"><em>네이비</em><em>차트 중심</em><em>표 정렬</em></div><button class="mini-copy" onclick="copyHidden('sp2',this)">이 스타일 프롬프트 복사</button><pre id="sp2" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 절제된 금융/전략 보고서 (P03)
+스타일 설명: 신뢰·논리·권위. 네이비·차트 중심·표 정렬.
+서식 구조: 표지 + 지표 표 + 매출 차트
+추천 폰트: IBM Plex Sans KR + Pretendard
+컬러:
+- 메인: #1E3A5F
+- 배경: #F8FAFC
+- 텍스트: #1E293B
+- 강조: #0D9488
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P04 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P04</span><h4>스타트업 IR</h4><p class="sdesc">야망·임팩트·성장. 큰 숫자 + 다크 샌드위치 + 강한 대비.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms dark" style="--ms-main:#6D5DF6;--ms-bg-sub:#2A2B5C;--ms-dark:#1A1B3E;--ms-accent:#22C55E"><div class="ms-chip" style="background:#6D5DF6">IR DECK</div><div class="ms-h big">Series A<br>Fundraise</div><div class="ms-sub" style="color:#A78BFA">2026.05</div></div><div class="ms" style="--ms-main:#6D5DF6;--ms-bg:#F7F7FF;--ms-bg-sub:#EDEBFF"><div class="ms-sub">MAU 성장률</div><div class="ms-bignum">+325%</div><div class="ms-sub" style="text-align:center">YoY · 12개월 누적</div></div><div class="ms dark" style="--ms-main:#22C55E;--ms-bg-sub:#2A2B5C;--ms-dark:#1A1B3E;--ms-accent:#22C55E"><div class="ms-h">Traction</div><div class="ms-chart"><div></div><div></div><div></div></div></div></div></div><div class="style-info"><small>Montserrat + Pretendard</small><div class="style-tags"><em>큰 숫자</em><em>다크 샌드위치</em><em>강한 대비</em></div><button class="mini-copy" onclick="copyHidden('sp3',this)">이 스타일 프롬프트 복사</button><pre id="sp3" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 스타트업 IR (P04)
+스타일 설명: 야망·임팩트·성장. 큰 숫자 + 다크 샌드위치 + 강한 대비.
+서식 구조: 다크 표지 + 성장 숫자 + 다크 트랙션 차트
+추천 폰트: Montserrat + Pretendard
+컬러:
+- 메인: #6D5DF6
+- 배경: #F7F7FF
+- 텍스트: #111827
+- 강조: #22C55E
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P05 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P05</span><h4>감성 브랜드 소개서</h4><p class="sdesc">정서·스토리·아이덴티티. 큰 이미지 + 시네마틱 여백.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#D97559;--ms-bg:#FAF9F5;--ms-bg-sub:#F5D5C8;--ms-accent:#F0C274"><div class="ms-h big serif">새로운 시작.</div><div class="ms-sub">— 2026 Brand Launch</div></div><div class="ms" style="--ms-main:#D97559;--ms-bg:#FAF9F5;--ms-bg-sub:#F5D5C8;--ms-accent:#F0C274"><div class="ms-img"></div><div class="ms-sub">제품 비주얼 영역</div></div><div class="ms" style="--ms-main:#D97559;--ms-bg:#FAF9F5;--ms-bg-sub:#F5D5C8"><div class="ms-quote">"우리는<br>본질에 집중한다."</div></div></div></div><div class="style-info"><small>Noto Serif KR + Pretendard</small><div class="style-tags"><em>큰 이미지</em><em>시네마틱</em><em>감성 카피</em></div><button class="mini-copy" onclick="copyHidden('sp4',this)">이 스타일 프롬프트 복사</button><pre id="sp4" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 감성 브랜드 소개서 (P05)
+스타일 설명: 정서·스토리·아이덴티티. 큰 이미지 + 시네마틱 여백.
+서식 구조: 세리프 카피 + 이미지 비주얼 + 브랜드 인용구
+추천 폰트: Noto Serif KR + Pretendard
+컬러:
+- 메인: #D97559
+- 배경: #FAF9F5
+- 텍스트: #2C2929
+- 강조: #F0C274
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P06 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P06</span><h4>AI/IT 강의자료</h4><p class="sdesc">단계별 명확성. 화이트 배경 + 스텝 번호 + 코드 실습.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#2563EB;--ms-bg:#FFFFFF;--ms-bg-sub:#EEF3FF"><div class="ms-chip" style="background:#EEF3FF;color:#2563EB;border:0.5px solid #C7D9FF">LESSON 01</div><div class="ms-h big" style="color:#1E3A8A;margin-top:3px">Claude로<br>PPT 만들기</div><div class="ms-sub" style="margin-top:auto;color:#2563EB;font-weight:700">AI 강의자료 · 2026</div></div><div class="ms" style="--ms-main:#2563EB;--ms-bg:#FFFFFF;--ms-bg-sub:#EEF3FF"><div class="ms-bar"></div><div class="ms-h" style="font-size:7px;margin-bottom:4px">학습 순서</div><div style="display:flex;flex-direction:column;gap:3px"><div style="display:flex;align-items:center;gap:3px"><div style="background:#2563EB;color:#fff;min-width:9px;height:9px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:5px;font-weight:800;flex-shrink:0">1</div><div style="background:#EEF3FF;border-radius:1px;height:9px;flex:1"></div></div><div style="display:flex;align-items:center;gap:3px"><div style="background:#2563EB;color:#fff;min-width:9px;height:9px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:5px;font-weight:800;flex-shrink:0">2</div><div style="background:#EEF3FF;border-radius:1px;height:9px;flex:1"></div></div><div style="display:flex;align-items:center;gap:3px"><div style="background:#fff;color:#2563EB;min-width:9px;height:9px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:5px;font-weight:800;flex-shrink:0;border:0.8px solid #2563EB">3</div><div style="background:#F5F8FF;border:0.5px dashed #C7D9FF;border-radius:1px;height:9px;flex:1"></div></div></div></div><div class="ms" style="--ms-main:#2563EB;--ms-bg:#FFFFFF;--ms-bg-sub:#EEF3FF"><div class="ms-bar"></div><div class="ms-h" style="font-size:6.5px;color:#2563EB;margin-bottom:3px">프롬프트 실습</div><div style="background:#1E293B;border-radius:2px;padding:3px 4px;font-family:monospace;font-size:4.5px;color:#7DD3FC;line-height:1.7;flex:1">"P06 스타일로<br>10장 강의자료<br>만들어줘"</div></div></div></div><div class="style-info"><small>IBM Plex Sans KR + Pretendard</small><div class="style-tags"><em>스텝 번호</em><em>화이트 배경</em><em>코드 실습</em></div><button class="mini-copy" onclick="copyHidden('sp5',this)">이 스타일 프롬프트 복사</button><pre id="sp5" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: AI/IT 강의자료 (P06)
+스타일 설명: 단계별 명확성. 화이트 배경 + 스텝 번호 + 코드 실습.
+서식 구조: 레슨 표지 + 학습 순서 단계 + 코드 실습 블록
+추천 폰트: IBM Plex Sans KR + Pretendard
+컬러:
+- 메인: #2563EB
+- 배경: #FFFFFF
+- 텍스트: #1E3A8A
+- 강조: #7DD3FC
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P07 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P07</span><h4>모던 다크 컨트라스트</h4><p class="sdesc">테크·트렌디·집중. 다크 배경 + 네온 액센트 + 모노스페이스.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms dark" style="--ms-main:#0EA5E9;--ms-bg-sub:#1E293B;--ms-dark:#0F172A;--ms-accent:#0EA5E9"><div class="ms-h big">Edge<br>Functions</div><div class="ms-sub" style="color:#0EA5E9">v2.4 · NEW</div></div><div class="ms dark" style="--ms-main:#0EA5E9;--ms-bg-sub:#1E293B;--ms-dark:#0F172A;--ms-accent:#0EA5E9"><div class="ms-h mono">// example</div><div class="ms-code">export const config<br>= { runtime: 'edge' }</div></div><div class="ms dark" style="--ms-main:#0EA5E9;--ms-bg-sub:#1E293B;--ms-dark:#0F172A;--ms-accent:#0EA5E9"><div class="ms-sub">avg response</div><div class="ms-bignum">12ms</div><div class="ms-sub" style="text-align:center;color:#0EA5E9">▼ 38% faster</div></div></div></div><div class="style-info"><small>Manrope + IBM Plex Sans KR</small><div class="style-tags"><em>다크 배경</em><em>네온</em><em>모노스페이스</em></div><button class="mini-copy" onclick="copyHidden('sp6',this)">이 스타일 프롬프트 복사</button><pre id="sp6" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 모던 다크 컨트라스트 (P07)
+스타일 설명: 테크·트렌디·집중. 다크 배경 + 네온 액센트 + 모노스페이스.
+서식 구조: 다크 히어로 + 코드 블록 + 숫자 강조
+추천 폰트: Manrope + IBM Plex Sans KR
+컬러:
+- 메인: #0EA5E9
+- 배경: #0F172A (다크)
+- 텍스트: #F1F5F9
+- 강조: #0EA5E9
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P08 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P08</span><h4>에디토리얼 매거진</h4><p class="sdesc">잡지·읽기 친화·고급. 큰 세리프 타이틀 + 칼럼 레이아웃.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#171717;--ms-bg:#FAFAF7;--ms-bg-sub:#F0EBE0;--ms-accent:#DC2626"><div class="ms-sub">ISSUE 24 · MAY 2026</div><div class="ms-h big serif">The Future<br>of Brand</div></div><div class="ms" style="--ms-main:#171717;--ms-bg:#FAFAF7;--ms-bg-sub:#F0EBE0"><div class="ms-h serif">Chapter 02</div><div class="ms-cols"><div></div><div></div></div><div class="ms-sub">— 2단 칼럼 레이아웃</div></div><div class="ms" style="--ms-main:#171717;--ms-bg:#FAFAF7;--ms-bg-sub:#F0EBE0"><div class="ms-quote">"Less is more<br>when intentional."</div></div></div></div><div class="style-info"><small>Noto Serif KR</small><div class="style-tags"><em>세리프 타이틀</em><em>칼럼 레이아웃</em><em>사진+텍스트</em></div><button class="mini-copy" onclick="copyHidden('sp7',this)">이 스타일 프롬프트 복사</button><pre id="sp7" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 에디토리얼 매거진 (P08)
+스타일 설명: 잡지·읽기 친화·고급. 큰 세리프 타이틀 + 칼럼 레이아웃.
+서식 구조: 커버 페이지 + 2단 칼럼 + 인용구 페이지
+추천 폰트: Noto Serif KR
+컬러:
+- 메인: #171717
+- 배경: #FAFAF7
+- 텍스트: #1F2937
+- 강조: #DC2626
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P09 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P09</span><h4>웰니스/시니어 친화</h4><p class="sdesc">차분·안정·공감. 파스텔 + 곡선 + 큰 글자 + 부드러운 그림자.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#4F9D8D;--ms-bg:#FFF9F0;--ms-bg-sub:#E7F3EF;--ms-accent:#F2C94C"><div class="ms-chip" style="background:#F2C94C;color:#22413B">WELLNESS</div><div class="ms-h big" style="font-weight:600">매일 5분<br>마음 챙김</div></div><div class="ms" style="--ms-main:#4F9D8D;--ms-bg:#FFF9F0;--ms-bg-sub:#E7F3EF"><div class="ms-h">호흡 단계</div><div class="ms-flow"><div>들이쉬기</div><span>→</span><div>멈춤</div><span>→</span><div>내쉬기</div></div></div><div class="ms" style="--ms-main:#4F9D8D;--ms-bg:#FFF9F0;--ms-bg-sub:#E7F3EF;--ms-accent:#F2C94C"><div class="ms-img" style="opacity:0.65"></div><div class="ms-sub" style="text-align:center">차분히 호흡하세요</div></div></div></div><div class="style-info"><small>Gowun Dodum + Pretendard</small><div class="style-tags"><em>파스텔</em><em>곡선</em><em>큰 글자</em></div><button class="mini-copy" onclick="copyHidden('sp8',this)">이 스타일 프롬프트 복사</button><pre id="sp8" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 웰니스/시니어 친화 (P09)
+스타일 설명: 차분·안정·공감. 파스텔 + 곡선 + 큰 글자 + 부드러운 그림자.
+서식 구조: 칩 + 큰 제목 + 흐름 다이어그램 + 이미지
+추천 폰트: Gowun Dodum + Pretendard
+컬러:
+- 메인: #4F9D8D
+- 배경: #FFF9F0
+- 텍스트: #2F3A35
+- 강조: #F2C94C
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P10 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P10</span><h4>카드뉴스 스타일 발표</h4><p class="sdesc">SNS 친화·요점만. 큰 헤드라인 + 1슬라이드 1메시지 + 강한 대비.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#F59E0B;--ms-bg:#FFFBEB;--ms-bg-sub:#FEF3C7;--ms-accent:#DC2626"><div class="ms-chip" style="background:#F59E0B">1 / 5</div><div class="ms-h big" style="font-weight:900">PPT 잘 만드는<br>5가지 비밀</div></div><div class="ms" style="--ms-main:#F59E0B;--ms-bg:#FFFBEB;--ms-bg-sub:#FEF3C7"><div class="ms-chip" style="background:#F59E0B">TIP 03</div><div class="ms-h big" style="font-weight:900">색은 1개만<br>사용하세요</div></div><div class="ms" style="--ms-main:#DC2626;--ms-bg:#FFFBEB;--ms-bg-sub:#FEF3C7"><div class="ms-h big" style="font-weight:900;color:#DC2626">저장 ⭐<br>친구 공유 →</div></div></div></div><div class="style-info"><small>Black Han Sans + Pretendard</small><div class="style-tags"><em>정사각 비율</em><em>큰 헤드라인</em><em>1메시지</em></div><button class="mini-copy" onclick="copyHidden('sp9',this)">이 스타일 프롬프트 복사</button><pre id="sp9" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 카드뉴스 스타일 발표 (P10)
+스타일 설명: SNS 친화·요점만. 큰 헤드라인 + 1슬라이드 1메시지 + 강한 대비.
+서식 구조: 시리즈 번호 칩 + 큰 헤드라인 × 1메시지
+추천 폰트: Black Han Sans + Pretendard
+컬러:
+- 메인: #F59E0B
+- 배경: #FFFBEB
+- 텍스트: #1F2937
+- 강조: #DC2626
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P11 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P11</span><h4>핀테크 클린</h4><p class="sdesc">안전·신뢰·간결. 큰 숫자 + 시그니처 블루 + 카드 UI.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#635BFF;--ms-bg:#F6F9FC;--ms-bg-sub:#E6EBF5"><div class="ms-bar"></div><div class="ms-sub">현재 잔액</div><div class="ms-bignum">₩125K</div><div class="ms-sub" style="text-align:center">전월 +₩48K</div></div><div class="ms" style="--ms-main:#635BFF;--ms-bg:#F6F9FC;--ms-bg-sub:#E6EBF5"><div class="ms-bar"></div><div class="ms-h">송금 단계</div><div class="ms-flow"><div>금액</div><span>→</span><div>확인</div><span>→</span><div>완료</div></div></div><div class="ms" style="--ms-main:#635BFF;--ms-bg:#F6F9FC;--ms-bg-sub:#E6EBF5;--ms-accent:#00D4FF"><div class="ms-chip" style="background:#00D4FF;color:#0A2540">SECURE</div><div class="ms-h">2단계 인증</div><div class="ms-bignum" style="font-size:22px">✓</div></div></div></div><div class="style-info"><small>Pretendard + Manrope</small><div class="style-tags"><em>큰 숫자</em><em>시그니처 블루</em><em>카드 UI</em></div><button class="mini-copy" onclick="copyHidden('sp10',this)">이 스타일 프롬프트 복사</button><pre id="sp10" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 핀테크 클린 (P11)
+스타일 설명: 안전·신뢰·간결. 큰 숫자 + 시그니처 블루 + 카드 UI.
+서식 구조: 잔액 카드 + 송금 흐름 + 보안 확인
+추천 폰트: Pretendard + Manrope
+컬러:
+- 메인: #635BFF
+- 배경: #F6F9FC
+- 텍스트: #0A2540
+- 강조: #00D4FF
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P12 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P12</span><h4>일본 와비사비 미니멀</h4><p class="sdesc">절제·여백·고요. 베이지 + 숯 + 세리프 한 줄.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#8B7355;--ms-bg:#F5F0E1;--ms-bg-sub:#E8DFC8;--ms-accent:#A0522D"><div class="ms-h big serif" style="margin:auto 0">가을의 정원.</div></div><div class="ms" style="--ms-main:#8B7355;--ms-bg:#F5F0E1;--ms-bg-sub:#E8DFC8"><div class="ms-sub" style="font-family:'Noto Serif KR',serif">— 차 한 잔의 시간</div><div style="height:1px;background:#8B7355;margin:6px 0;width:60%"></div><div class="ms-h" style="font-size:7px;font-family:'Noto Serif KR',serif;font-weight:500">정원에 내려앉은 빛처럼<br>한 잔의 차에 담긴<br>고요한 마음.</div></div><div class="ms" style="--ms-main:#8B7355;--ms-bg:#F5F0E1;--ms-bg-sub:#E8DFC8"><div class="ms-quote" style="font-style:normal">"불완전 속의<br>완전함."</div></div></div></div><div class="style-info"><small>Noto Serif KR + Hahmlet</small><div class="style-tags"><em>큰 여백</em><em>세리프</em><em>절제</em></div><button class="mini-copy" onclick="copyHidden('sp11',this)">이 스타일 프롬프트 복사</button><pre id="sp11" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 일본 와비사비 미니멀 (P12)
+스타일 설명: 절제·여백·고요. 베이지 + 숯 + 세리프 한 줄.
+서식 구조: 세리프 한 줄 제목 + 가로선 + 인용구
+추천 폰트: Noto Serif KR + Hahmlet
+컬러:
+- 메인: #8B7355
+- 배경: #F5F0E1
+- 텍스트: #2B1A12
+- 강조: #A0522D
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P13 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P13</span><h4>모바일 앱 출시</h4><p class="sdesc">캐주얼·활기·친근. 컬러풀 + 큰 버튼 + 폰 목업.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#FF6B6B;--ms-bg:#FFFFFF;--ms-bg-sub:#FFE3E3;--ms-accent:#4ECDC4"><div class="ms-chip" style="background:#FF6B6B">v2.0 LAUNCH</div><div class="ms-h big" style="color:#FF6B6B">새로운 만남.<br>한 손으로.</div></div><div class="ms" style="--ms-main:#FF6B6B;--ms-bg:#FFFFFF;--ms-bg-sub:#FFE3E3;--ms-accent:#4ECDC4"><div class="ms-h">3가지 핵심</div><div class="ms-grid-4" style="grid-template-columns:1fr 1fr 1fr"><div style="border-left-color:#FF6B6B"></div><div style="border-left-color:#4ECDC4"></div><div style="border-left-color:#FFD93D"></div></div></div><div class="ms" style="--ms-main:#FF6B6B;--ms-bg:#FFFFFF;--ms-bg-sub:#FFE3E3"><div class="ms-h" style="margin:auto auto 6px;text-align:center">지금 시작하세요</div><div class="ms-chip" style="background:#FF6B6B;margin:0 auto;font-size:5.5px;padding:2px 6px">App Store 다운로드 ↓</div></div></div></div><div class="style-info"><small>Poppins + Pretendard</small><div class="style-tags"><em>생동 컬러</em><em>큰 버튼</em><em>폰 목업</em></div><button class="mini-copy" onclick="copyHidden('sp12',this)">이 스타일 프롬프트 복사</button><pre id="sp12" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 모바일 앱 출시 (P13)
+스타일 설명: 캐주얼·활기·친근. 컬러풀 + 큰 버튼 + 폰 목업.
+서식 구조: 출시 칩 + 핵심 기능 3가지 + CTA
+추천 폰트: Poppins + Pretendard
+컬러:
+- 메인: #FF6B6B
+- 배경: #FFFFFF
+- 텍스트: #1F2937
+- 강조: #4ECDC4
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P14 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P14</span><h4>럭셔리 블랙</h4><p class="sdesc">프리미엄·고급·정중. 깊은 블랙 + 골드 + 세리프.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms dark" style="--ms-main:#D4AF37;--ms-bg-sub:#1C1C1C;--ms-dark:#0A0A0A;--ms-accent:#D4AF37"><div class="ms-sub" style="color:#D4AF37;font-family:'Noto Serif KR',serif">— EST. 2026</div><div class="ms-h big serif" style="color:#D4AF37">L'Étoile.</div></div><div class="ms dark" style="--ms-main:#D4AF37;--ms-bg-sub:#1C1C1C;--ms-dark:#0A0A0A;--ms-accent:#D4AF37"><div class="ms-h serif" style="color:#D4AF37">Collection 26</div><div class="ms-grid-4"><div style="background:#1C1C1C;border-left-color:#D4AF37"></div><div style="background:#1C1C1C;border-left-color:#D4AF37"></div><div style="background:#1C1C1C;border-left-color:#D4AF37"></div><div style="background:#1C1C1C;border-left-color:#D4AF37"></div></div></div><div class="ms dark" style="--ms-main:#D4AF37;--ms-bg-sub:#1C1C1C;--ms-dark:#0A0A0A"><div class="ms-quote" style="color:#D4AF37;font-style:normal">"Crafted<br>for the few."</div></div></div></div><div class="style-info"><small>Noto Serif KR + Pretendard</small><div class="style-tags"><em>블랙+골드</em><em>세리프</em><em>큰 여백</em></div><button class="mini-copy" onclick="copyHidden('sp13',this)">이 스타일 프롬프트 복사</button><pre id="sp13" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 럭셔리 블랙 (P14)
+스타일 설명: 프리미엄·고급·정중. 깊은 블랙 + 골드 + 세리프.
+서식 구조: 다크 골드 표지 + 컬렉션 그리드 + 인용구
+추천 폰트: Noto Serif KR + Pretendard
+컬러:
+- 메인: #D4AF37 (골드)
+- 배경: #0A0A0A (블랙)
+- 텍스트: #FAF7EF
+- 강조: #D4AF37
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P15 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P15</span><h4>이커머스 활기</h4><p class="sdesc">따뜻·활기·구매 유도. 오렌지 + 큰 가격 + CTA.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#F97316;--ms-bg:#FFFBEB;--ms-bg-sub:#FFEDD5;--ms-accent:#DC2626"><div class="ms-chip" style="background:#DC2626">BIG SALE</div><div class="ms-bignum" style="font-size:34px">-40%</div><div class="ms-sub" style="text-align:center">전 품목 · 오늘만</div></div><div class="ms" style="--ms-main:#F97316;--ms-bg:#FFFBEB;--ms-bg-sub:#FFEDD5"><div class="ms-h">베스트 4</div><div class="ms-grid-4"><div></div><div></div><div></div><div></div></div></div><div class="ms" style="--ms-main:#F97316;--ms-bg:#FFFBEB;--ms-bg-sub:#FFEDD5;--ms-accent:#DC2626"><div class="ms-sub">마감 임박</div><div class="ms-bignum" style="font-size:22px;color:#DC2626">02:14</div><div class="ms-chip" style="background:#F97316;margin:0 auto">지금 구매 →</div></div></div></div><div class="style-info"><small>Black Han Sans + Pretendard</small><div class="style-tags"><em>오렌지</em><em>큰 가격</em><em>CTA</em></div><button class="mini-copy" onclick="copyHidden('sp14',this)">이 스타일 프롬프트 복사</button><pre id="sp14" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 이커머스 활기 (P15)
+스타일 설명: 따뜻·활기·구매 유도. 오렌지 + 큰 가격 + CTA.
+서식 구조: 할인 칩 + 베스트 상품 그리드 + 카운트다운 CTA
+추천 폰트: Black Han Sans + Pretendard
+컬러:
+- 메인: #F97316
+- 배경: #FFFBEB
+- 텍스트: #1F2937
+- 강조: #DC2626
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P16 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P16</span><h4>비영리/공익</h4><p class="sdesc">신뢰·따뜻·진정성. 그린 + 따뜻한 화이트 + 큰 수혜자 숫자.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#15803D;--ms-bg:#FFFFFF;--ms-bg-sub:#F0FDF4"><div class="ms-bar"></div><div class="ms-sub">2026 IMPACT REPORT</div><div class="ms-h big">함께 만든<br>변화의 1년</div></div><div class="ms" style="--ms-main:#15803D;--ms-bg:#FFFFFF;--ms-bg-sub:#F0FDF4"><div class="ms-bar"></div><div class="ms-sub">수혜자</div><div class="ms-bignum">12,840</div><div class="ms-sub" style="text-align:center">전년 대비 +38%</div></div><div class="ms" style="--ms-main:#15803D;--ms-bg:#FFFFFF;--ms-bg-sub:#F0FDF4;--ms-accent:#EAB308"><div class="ms-h">함께해 주세요</div><div class="ms-chip" style="background:#15803D;margin:auto auto 4px">월 1만원 후원 →</div></div></div></div><div class="style-info"><small>Pretendard</small><div class="style-tags"><em>그린</em><em>사람 사진</em><em>임팩트 숫자</em></div><button class="mini-copy" onclick="copyHidden('sp15',this)">이 스타일 프롬프트 복사</button><pre id="sp15" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 비영리/공익 (P16)
+스타일 설명: 신뢰·따뜻·진정성. 그린 + 따뜻한 화이트 + 큰 수혜자 숫자.
+서식 구조: 임팩트 표지 + 수혜자 숫자 + 참여 CTA
+추천 폰트: Pretendard
+컬러:
+- 메인: #15803D
+- 배경: #FFFFFF
+- 텍스트: #1F2937
+- 강조: #EAB308
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P17 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P17</span><h4>건축/부동산</h4><p class="sdesc">절제·신뢰·공간감. 베이지 + 다크 그레이 + 큰 사진.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#A8927A;--ms-bg:#F7F4EE;--ms-bg-sub:#E5DCC9;--ms-accent:#B45309"><div class="ms-sub">PROJECT 04</div><div class="ms-h big" style="font-family:'IBM Plex Sans KR',sans-serif">Forest<br>Pavilion</div></div><div class="ms" style="--ms-main:#A8927A;--ms-bg:#F7F4EE;--ms-bg-sub:#E5DCC9"><div class="ms-img" style="background:linear-gradient(135deg,#A8927A,#1C1C1C);opacity:0.7"></div><div class="ms-sub">— 정면 투시도</div></div><div class="ms" style="--ms-main:#A8927A;--ms-bg:#F7F4EE;--ms-bg-sub:#E5DCC9"><div class="ms-h">SPECS</div><div class="ms-table"><div></div><div></div><div></div><div></div></div></div></div></div><div class="style-info"><small>IBM Plex Sans KR + Pretendard</small><div class="style-tags"><em>베이지+다크</em><em>큰 사진</em><em>도면 라인</em></div><button class="mini-copy" onclick="copyHidden('sp16',this)">이 스타일 프롬프트 복사</button><pre id="sp16" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 건축/부동산 (P17)
+스타일 설명: 절제·신뢰·공간감. 베이지 + 다크 그레이 + 큰 사진.
+서식 구조: 프로젝트 표지 + 이미지 비주얼 + 스펙 표
+추천 폰트: IBM Plex Sans KR + Pretendard
+컬러:
+- 메인: #A8927A
+- 배경: #F7F4EE
+- 텍스트: #1C1C1C
+- 강조: #B45309
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P18 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P18</span><h4>데이터 시각화 중심</h4><p class="sdesc">명료·분석적·인포그래픽. 큰 차트 + 다중 컬러 액센트.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#06B6D4;--ms-bg:#F8FAFC;--ms-bg-sub:#E0F2FE;--ms-accent:#F43F5E"><div class="ms-bar"></div><div class="ms-h">DAU 추이</div><div class="ms-chart"><div></div><div></div><div></div></div></div><div class="ms" style="--ms-main:#06B6D4;--ms-bg:#F8FAFC;--ms-bg-sub:#E0F2FE"><div class="ms-bar"></div><div class="ms-h">KPI 4지표</div><div class="ms-grid-4"><div></div><div style="border-left-color:#F43F5E"></div><div style="border-left-color:#22C55E"></div><div style="border-left-color:#F59E0B"></div></div></div><div class="ms" style="--ms-main:#06B6D4;--ms-bg:#F8FAFC;--ms-bg-sub:#E0F2FE;--ms-accent:#F43F5E"><div class="ms-sub">전환율 비교</div><div class="ms-cols"><div style="background:#06B6D4;height:22px"></div><div style="background:#F43F5E;height:14px"></div></div><div class="ms-sub">A안 vs B안</div></div></div></div><div class="style-info"><small>Manrope + Pretendard</small><div class="style-tags"><em>큰 차트</em><em>멀티 컬러</em><em>숫자 강조</em></div><button class="mini-copy" onclick="copyHidden('sp17',this)">이 스타일 프롬프트 복사</button><pre id="sp17" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 데이터 시각화 중심 (P18)
+스타일 설명: 명료·분석적·인포그래픽. 큰 차트 + 다중 컬러 액센트.
+서식 구조: DAU 차트 + KPI 4지표 + A/B 비교
+추천 폰트: Manrope + Pretendard
+컬러:
+- 메인: #06B6D4
+- 배경: #F8FAFC
+- 텍스트: #0F172A
+- 강조: #F43F5E
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P19 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P19</span><h4>한국 트렌디 (당근·배민)</h4><p class="sdesc">친근·동네스러움·생활밀착. 둥근 모서리 + 따뜻한 컬러.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#FF8C42;--ms-bg:#FFF8F0;--ms-bg-sub:#FEE8D6;--ms-accent:#FFD93D"><div class="ms-chip" style="background:#FF8C42">동네 알림</div><div class="ms-h big">우리 동네<br>새로운 발견 🏠</div></div><div class="ms" style="--ms-main:#FF8C42;--ms-bg:#FFF8F0;--ms-bg-sub:#FEE8D6"><div class="ms-h">오늘의 추천</div><div class="ms-grid-4"><div></div><div></div><div></div><div></div></div></div><div class="ms" style="--ms-main:#FF8C42;--ms-bg:#FFF8F0;--ms-bg-sub:#FEE8D6;--ms-accent:#FFD93D"><div class="ms-h" style="margin:auto auto 6px;text-align:center">함께해요 😊</div><div class="ms-chip" style="background:#FF8C42;margin:0 auto">지금 시작하기</div></div></div></div><div class="style-info"><small>Pretendard</small><div class="style-tags"><em>둥근 모서리</em><em>손그림 톤</em><em>따뜻한 컬러</em></div><button class="mini-copy" onclick="copyHidden('sp18',this)">이 스타일 프롬프트 복사</button><pre id="sp18" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 한국 트렌디 (P19)
+스타일 설명: 친근·동네스러움·생활밀착. 둥근 모서리 + 따뜻한 컬러.
+서식 구조: 칩 + 그리드 카드 + CTA
+추천 폰트: Pretendard
+컬러:
+- 메인: #FF8C42
+- 배경: #FFF8F0
+- 텍스트: #1F2937
+- 강조: #FFD93D
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+<!-- P20 -->
+<article class="style-card"><div class="style-card-head"><span class="style-no-badge">P20</span><h4>어린이/교육 동심</h4><p class="sdesc">밝고 친근·동심·놀이 같은 학습. 파스텔 + 큰 글자 + 둥근 도형.</p></div><div class="ms-wrap"><div class="mini-slides"><div class="ms" style="--ms-main:#FFB5C5;--ms-bg:#FFFEF7;--ms-bg-sub:#C8E7F6;--ms-accent:#FFD93D"><div class="ms-chip" style="background:#FFD93D;color:#3D2645">LESSON A</div><div class="ms-h big" style="color:#3D2645">알파벳<br>놀이 🎨</div></div><div class="ms" style="--ms-main:#FFB5C5;--ms-bg:#FFFEF7;--ms-bg-sub:#C8E7F6"><div class="ms-h" style="color:#3D2645">오늘은</div><div class="ms-grid-4"><div style="background:#FFB5C5;border-left-color:#FFD93D"></div><div style="background:#C8E7F6;border-left-color:#FFD93D"></div><div style="background:#FFE3E3;border-left-color:#FFD93D"></div><div style="background:#C8E7F6;border-left-color:#FFD93D"></div></div></div><div class="ms" style="--ms-main:#FFB5C5;--ms-bg:#FFFEF7;--ms-bg-sub:#C8E7F6;--ms-accent:#FFD93D"><div class="ms-h big" style="color:#3D2645;text-align:center;margin:auto 0">잘했어요!<br>🎉</div></div></div></div><div class="style-info"><small>Gowun Dodum + Pretendard</small><div class="style-tags"><em>파스텔</em><em>큰 글자</em><em>둥근 도형</em></div><button class="mini-copy" onclick="copyHidden('sp19',this)">이 스타일 프롬프트 복사</button><pre id="sp19" class="hidden-prompt">아래 스타일로 PPT를 만들어줘.
+
+디자인 스타일: 어린이/교육 동심 (P20)
+스타일 설명: 밝고 친근·동심·놀이 같은 학습. 파스텔 + 큰 글자 + 둥근 도형.
+서식 구조: 레슨 표지 + 파스텔 그리드 + 완료 메시지
+추천 폰트: Gowun Dodum + Pretendard
+컬러:
+- 메인: #FFB5C5 (파스텔 핑크)
+- 배경: #FFFEF7
+- 텍스트: #3D2645
+- 강조: #FFD93D
+
+레퍼런스는 그대로 복제하지 말고, 위 스타일의 원칙만 적용해줘.</pre></div></article>
+
+</div></section>
+
+<section id="prompts"><div class="section-head"><h2>프롬프트 2종</h2><p>PPT 생성 + 레퍼런스 적용 프롬프트, 복사 가능</p></div><div class="two-col"><div class="prompt-card"><div class="prompt-head"><h3>PPT 생성 프롬프트</h3><button class="copy-btn" onclick="copyText('pptPrompt',this)">복사하기</button></div><pre id="pptPrompt">너는 10년차 발표자료 기획자이자 PPT 디자이너다.
+
+아래 기획안과 디자인 기준을 바탕으로 발표자료를 만들어줘.
+
+주제:
+[주제]
+
+목적:
+[발표용 / 제출용 / 제안서 / 교육자료 / 보고자료 / 소개서]
+
+청중:
+[임원 / 고객 / 투자자 / 학습자 / 내부팀 / 심사위원]
+
+핵심 메시지:
+[발표 후 기억해야 할 한 문장]
+
+스토리라인:
+[문제→해결 / 개념→실습 / Before→After / 기타]
+
+디자인 스타일:
+[P01~P20 번호 또는 스타일명]
+
+컬러:
+[HEX 코드 팔레트]
+
+폰트:
+[제목 / 본문 / 숫자용 폰트 기준]
+
+레퍼런스:
+첨부한 레퍼런스는 그대로 복제하지 말고,
+여백감, 제목 위치, 카드형 정보 배치, 색감, 아이콘 스타일만 참고해줘.
+문구와 내용 구성은 새 자료에 맞게 다시 작성해줘.
+
+슬라이드 구성:
+[슬라이드별 내용]
+
+금기사항:
+- 과한 그라데이션 금지
+- 의미 없는 아이콘 남발 금지
+- 제목 아래 의미 없는 가로선 금지
+- 본문 임의 왜곡 금지
+- 텍스트 넘침 금지
+
+각 슬라이드에는 제목, 핵심 메시지, 본문, 시각 구조, 발표자 메모를 포함해줘.</pre></div><div class="prompt-card"><div class="prompt-head"><h3>레퍼런스 적용 프롬프트</h3><button class="copy-btn" onclick="copyText('refPrompt',this)">복사하기</button></div><pre id="refPrompt">첨부한 레퍼런스는 그대로 복제하지 말고,
+여백감, 제목 크기와 위치, 카드형 정보 배치, 색감, 아이콘 스타일만 참고해줘.
+
+문구와 내용 구성은 새 자료의 목적과 청중에 맞게 다시 작성해줘.
+
+참고할 것:
+1. 여백감
+2. 제목 크기와 위치
+3. 카드형 정보 배치
+4. 색감과 톤
+5. 아이콘 스타일
+6. 그래프/표의 단순화 방식
+
+복제하지 않을 것:
+1. 문장 구조
+2. 이미지 구성
+3. 브랜드 요소
+4. 세부 레이아웃
+5. 고유 문구</pre></div></div></section>
+
+<footer>commme ✦ PPT Design Style Library v10 · Built with Claude Code</footer>
+</body></html>
